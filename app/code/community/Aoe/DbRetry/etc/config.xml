@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Aoe_DbRetry>
+            <version>0.1.0</version>
+        </Aoe_DbRetry>
+    </modules>
+    <global>
+        <resource>
+            <connection>
+                <types>
+                    <pdo_mysql>
+                        <adapter>Aoe_DbRetry_Resource_Db_Pdo_Mysql_Adapter</adapter>
+                        <class>Aoe_DbRetry_Resource_Db_Pdo_Mysql_Type</class>
+                    </pdo_mysql>
+                </types>
+            </connection>
+        </resource>
+    </global>
+</config>

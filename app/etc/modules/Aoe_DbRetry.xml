@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Aoe_DbRetry>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Core/>
+            </depends>
+        </Aoe_DbRetry>
+    </modules>
+</config>

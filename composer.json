@@ -1,0 +1,21 @@
+{
+    "name": "aoepeople/aoe_dbretry",
+    "description": "Magento DB adapter that will retry lost connections and deadlocks",
+    "authors": [
+        {
+            "name": "Lee Saferite",
+            "email": "lee.saferite@aoe.com"
+        }
+    ],
+    "license": "OSL-3.0",
+    "type": "magento-module",
+    "require": {
+        "php": ">= 5.4",
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "require-dev": {
+        "ecomdev/ecomdev_phpunit": "*",
+        "squizlabs/php_codesniffer": "*",
+        "phpmd/phpmd": "*"
+    }
+}

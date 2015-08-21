@@ -1,0 +1,25 @@
+language: php
+php:
+  - 5.4
+  - 5.5
+env:
+  matrix:
+    - MAGENTO_VERSION=magento-ce-1.9.1.0
+    - MAGENTO_VERSION=magento-ce-1.9.0.1
+    - MAGENTO_VERSION=magento-ce-1.8.1.0
+    - MAGENTO_VERSION=magento-ce-1.8.0.0
+branches:
+  except:
+    - /^(\d+\.)+\d+$/
+before_script:
+  - curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+script:
+  # Code Style
+  - php phpcs.phar --standard=./phpcs.xml --encoding=utf-8 --report-width=180 ./app
+  # Unit Tests
+  #- curl -sSL https://raw.githubusercontent.com/AOEpeople/MageTestStand/master/setup.sh | bash
+notifications:
+  email:
+    recipients: [ lee.saferite@aoe.com ]
+    on_success: always
+    on_failure: always
