@@ -2,11 +2,11 @@
 
 class Aoe_DbRetry_Resource_Db_Pdo_Mysql_Adapter extends Magento_Db_Adapter_Pdo_Mysql
 {
-    protected $retryOnMessages = array(
+    protected $retryOnMessages = [
         'SQLSTATE[HY000]: General error: 2013 Lost connection to MySQL server during query',
         'SQLSTATE[HY000]: General error: 1205 Lock wait timeout exceeded; try restarting transaction',
         'SQLSTATE[40001]: Serialization failure: 1213 Deadlock found when trying to get lock; try restarting transaction',
-    );
+    ];
 
     /**
      * Special handling for PDO query().
@@ -18,7 +18,7 @@ class Aoe_DbRetry_Resource_Db_Pdo_Mysql_Adapter extends Magento_Db_Adapter_Pdo_M
      * @return Zend_Db_Statement_Pdo
      * @throws Zend_Db_Adapter_Exception To re-throw PDOException.
      */
-    public function query($sql, $bind = array())
+    public function query($sql, $bind = [])
     {
         $this->_debugTimer();
         $result = null;
