@@ -15,7 +15,7 @@ before_script:
   - curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
 script:
   # Code Style
-  - php phpcs.phar --standard=./phpcs.xml --encoding=utf-8 --report-width=180 ./app
+  - php phpcs.phar -s --standard=./phpcs.xml --encoding=utf-8 --report-width=180 ./app
   # Unit Tests
   #- curl -sSL https://raw.githubusercontent.com/AOEpeople/MageTestStand/master/setup.sh | bash
 notifications:
