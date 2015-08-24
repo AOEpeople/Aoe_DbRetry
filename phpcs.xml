@@ -16,6 +16,9 @@
 
         <!-- Handle line length in a different rule -->
         <exclude name="Generic.Files.LineLength"/>
+
+        <!-- Magento does not follow the camel case method name standards -->
+        <exclude name="PSR1.Methods.CamelCapsMethodName.NotCamelCaps" />
     </rule>
 
     <rule ref="Generic.Files.LineLength">
