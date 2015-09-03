@@ -45,6 +45,9 @@ class Aoe_DbRetry_Resource_Db_Pdo_Mysql_Adapter extends Magento_Db_Adapter_Pdo_M
                         if ($message && in_array($message, $this->retryOnMessages)) {
                             $sleepSeconds = pow($try, $retryPower);
                             Mage::log("Retrying query [retry:{$try} delay:{$sleepSeconds}]: {$message}", Zend_Log::DEBUG);
+                            if ($try === 1) {
+                                Mage::logException($e);
+                            }
                             sleep($sleepSeconds);
                             continue;
                         }
