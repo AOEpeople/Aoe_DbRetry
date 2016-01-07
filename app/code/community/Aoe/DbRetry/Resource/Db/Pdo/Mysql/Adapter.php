@@ -35,6 +35,7 @@ class Aoe_DbRetry_Resource_Db_Pdo_Mysql_Adapter extends Magento_Db_Adapter_Pdo_M
                     $try = $maxTries;
                 } catch (Exception $e) {
                     $try++;
+                    Mage::log("Max retry:{$maxTries} retry power:{$retryPower}", Zend_Log::DEBUG);
                     Mage::dispatchEvent('aoe_dbretry_exception', ['try' => $try, 'exception' => $e]);
                     if ($try < $maxTries) {
                         $message = null;
@@ -42,6 +43,9 @@ class Aoe_DbRetry_Resource_Db_Pdo_Mysql_Adapter extends Magento_Db_Adapter_Pdo_M
                             $message = $e->getMessage();
                         } elseif ($e->getPrevious() instanceof PDOException) {
                             $message = $e->getPrevious()->getMessage();
+                        } else {
+                            Mage::log("Exception is instance of " . get_class($e), Zend_Log::DEBUG);
+                            Mage::log("Previous Exception is instance of " . get_class($e->getPrevious()), Zend_Log::DEBUG);
                         }
                         if ($message && in_array($message, $this->retryOnMessages)) {
                             $sleepSeconds = pow($try, $retryPower);
