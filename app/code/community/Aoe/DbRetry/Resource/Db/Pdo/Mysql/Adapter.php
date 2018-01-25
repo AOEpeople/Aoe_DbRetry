@@ -36,6 +36,7 @@ class Aoe_DbRetry_Resource_Db_Pdo_Mysql_Adapter extends Magento_Db_Adapter_Pdo_M
                 } catch (Exception $e) {
                     $try++;
                     Mage::log("Max retry:{$maxTries} retry power:{$retryPower}", Zend_Log::DEBUG);
+                    Mage::dispatchEvent('aoe_dbretry_exception', ['try' => $try, 'exception' => $e]);
                     if ($try < $maxTries) {
                         $message = null;
                         if ($e instanceof PDOException) {
